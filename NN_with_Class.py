@@ -234,11 +234,11 @@ class Network:
             dw = (1/self.X.shape[0]) * np.dot(prev_layer_output,current_derivative.T)
             db = (1/self.X.shape[0]) * np.sum((current_derivative), axis = 1, keepdims = True)
 
+            updated_derivative = np.dot(current_layer.weights,current_derivative)
 
             current_layer.weights -= self.learning_rate * dw
             current_layer.bias -= self.learning_rate * db
 
-            updated_derivative = np.dot(current_layer.weights,current_derivative)
             
             prev_derivative.append(updated_derivative)
 
